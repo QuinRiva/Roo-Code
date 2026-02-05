@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui"
 import {
 	CompanyLogos,
 	FAQSection,
@@ -7,15 +6,44 @@ import {
 	OptionOverviewSection,
 	PillarsSection,
 	UseExamplesSection,
+	OpenClawTakeover,
 } from "@/components/homepage"
-import { EXTERNAL_LINKS } from "@/lib/constants"
-import { ArrowRight } from "lucide-react"
 import { StructuredData } from "@/components/structured-data"
 
 // Invalidate cache when a request comes in, at most once every hour.
 export const revalidate = 3600
 
+// Toggle this to enable/disable the OpenClaw homepage takeover
+const OPENCLAW_TAKEOVER_ENABLED = true
+
 export default async function Home() {
+	if (OPENCLAW_TAKEOVER_ENABLED) {
+		return (
+			<>
+				<StructuredData />
+				<OpenClawTakeover />
+				{/* Include key sections below the takeover */}
+				<div className="border-t border-border/50">
+					<div className="py-12 bg-muted/20">
+						<div className="container px-4 mx-auto text-center">
+							<p className="text-sm text-muted-foreground mb-4">
+								Trusted by developers at leading companies worldwide
+							</p>
+							<CompanyLogos />
+						</div>
+					</div>
+				</div>
+				<PillarsSection />
+				<OptionOverviewSection />
+				<UseExamplesSection />
+				<Testimonials />
+				<FAQSection />
+				<CTASection />
+			</>
+		)
+	}
+
+	// Original homepage content (when takeover is disabled)
 	return (
 		<>
 			<StructuredData />
@@ -39,28 +67,22 @@ export default async function Home() {
 					</div>
 					<div className="flex flex-col sm:flex-row gap-4 mb-16">
 						<div className="flex flex-col items-center gap-2">
-							<Button size="xl" className="w-full">
-								<a
-									href={EXTERNAL_LINKS.MARKETPLACE}
-									target="_blank"
-									rel="noreferrer"
-									className="flex items-center justify-center">
-									Install VS Code Extension
-									<ArrowRight className="ml-2 size-5" />
-								</a>
-							</Button>
+							<a
+								href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline"
+								target="_blank"
+								rel="noreferrer"
+								className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-lg font-medium transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring bg-primary text-primary-foreground shadow hover:bg-primary/80 h-14 px-8">
+								Install VS Code Extension
+							</a>
 							<span className="text-xs text-muted-foreground">Free and Open Source</span>
 						</div>
 
 						<div className="flex flex-col items-center gap-2">
-							<Button size="xl" className="w-full">
-								<a
-									href={EXTERNAL_LINKS.CLOUD_APP_SIGNUP_HOME}
-									className="flex items-center justify-center">
-									Try Cloud for Free
-									<ArrowRight className="ml-2 size-5" />
-								</a>
-							</Button>
+							<a
+								href="https://app.roocode.com/sign-up?redirect_url=/cloud-agents/setup"
+								className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-lg font-medium transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring bg-primary text-primary-foreground shadow hover:bg-primary/80 h-14 px-8">
+								Try Cloud for Free
+							</a>
 							<span className="text-xs text-muted-foreground">No credit card needed</span>
 						</div>
 					</div>
