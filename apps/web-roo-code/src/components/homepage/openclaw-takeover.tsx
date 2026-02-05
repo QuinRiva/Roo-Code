@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui"
 import { ArrowRight, Code, MessageCircle, Sparkles, Zap, Calendar, Mail, Plane, Bot } from "lucide-react"
-import Image from "next/image"
 import { EXTERNAL_LINKS } from "@/lib/constants"
 
 const OPENCLAW_CAPABILITIES = [
@@ -64,20 +63,9 @@ export function OpenClawTakeover() {
 					{/* Logos */}
 					<div className="flex items-center justify-center gap-6 mb-8">
 						<div className="flex flex-col items-center">
-							<Image
-								src="/RooCode-Badge-blk.svg"
-								alt="Roo Code"
-								width={80}
-								height={80}
-								className="dark:hidden"
-							/>
-							<Image
-								src="/RooCode-Badge-white.svg"
-								alt="Roo Code"
-								width={80}
-								height={80}
-								className="hidden dark:block"
-							/>
+							<div className="size-20 rounded-2xl bg-gradient-to-br from-violet-500 to-violet-700 flex items-center justify-center shadow-lg">
+								<span className="text-5xl">🦘</span>
+							</div>
 							<span className="text-sm font-semibold mt-2">Roo Code</span>
 						</div>
 						<div className="flex items-center gap-2">
@@ -85,7 +73,7 @@ export function OpenClawTakeover() {
 						</div>
 						<div className="flex flex-col items-center">
 							<div className="size-20 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-lg">
-								<span className="text-3xl">🦞</span>
+								<span className="text-5xl">🦞</span>
 							</div>
 							<span className="text-sm font-semibold mt-2">OpenClaw</span>
 						</div>
