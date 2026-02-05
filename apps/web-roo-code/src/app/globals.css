@@ -70,3 +70,83 @@
 		@apply bg-background text-foreground;
 	}
 }
+
+/* OpenClaw Takeover Animations */
+@keyframes openclaw-float {
+	0%,
+	100% {
+		transform: translateY(0) rotate(0deg);
+	}
+	50% {
+		transform: translateY(-30px) rotate(10deg);
+	}
+}
+
+@keyframes openclaw-rainbow {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@keyframes openclaw-shake {
+	0%,
+	100% {
+		transform: translateX(0);
+	}
+	25% {
+		transform: translateX(-10px) rotate(-1deg);
+	}
+	75% {
+		transform: translateX(10px) rotate(1deg);
+	}
+}
+
+@keyframes openclaw-mega-pulse {
+	0%,
+	100% {
+		transform: scale(1);
+		filter: brightness(1);
+	}
+	50% {
+		transform: scale(1.05);
+		filter: brightness(1.2);
+	}
+}
+
+@keyframes openclaw-float-up {
+	0% {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+	100% {
+		opacity: 0;
+		transform: translateY(-100px) scale(1.5);
+	}
+}
+
+.openclaw-shake-animation {
+	animation: openclaw-shake 0.5s ease-in-out;
+}
+
+.openclaw-float-animation {
+	animation: openclaw-float 3s ease-in-out infinite;
+}
+
+.openclaw-rainbow-text {
+	background-size: 200% 100%;
+	animation: openclaw-rainbow 3s linear infinite;
+}
+
+.openclaw-mega-pulse-animation {
+	animation: openclaw-mega-pulse 0.5s ease-in-out infinite;
+}
+
+.openclaw-float-up-animation {
+	animation: openclaw-float-up 1s ease-out forwards;
+}
